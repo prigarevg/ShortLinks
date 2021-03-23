@@ -1,14 +1,12 @@
-import React, {useState, useEffect, useContext, useRef, render} from "react";
+import React, {useState, useContext} from "react";
 import { useHttp } from "../hooks/http.hook";
 import {AuthContext} from '../context/AuthContext'
 import { useHistory } from "react-router-dom";
-import { Layout, Menu, Breadcrumb, message } from "antd";
-import { MapContainer, TileLayer, Marker, Popup, useMapEvents, useMapEvent, Circle, ser} from 'react-leaflet'
+import { message } from "antd";
+import { MapContainer, TileLayer, Marker, Popup, useMapEvent} from 'react-leaflet'
 import L from 'leaflet'
-import '../components/Map.css'
+import '../styles/Map.css'
 
-
-const { Header, Content, Footer } = Layout;
 
 export const MapPage = () => {const history = useHistory()
   const auth = useContext(AuthContext)
@@ -36,8 +34,7 @@ export const MapPage = () => {const history = useHistory()
       setPosition(e.latlng)
       
     
-      //console.log(lat, lng, latitude, longitude);
-   
+    
     })
     return position === null ? null : (
       <Marker position={position}>
@@ -45,28 +42,6 @@ export const MapPage = () => {const history = useHistory()
       </Marker>
     )
   }
-
-  /*
-  const pressHandler = async event =>{
-    if (event.key === 'Enter') {
-      try {
-        console.log(position.lat, position.lng, auth.token)
-        const fetched = await request ('api/latlng/getLatLng', 'GET', null, {
-          Authorization: `Bearer ${auth.token}`})
-    
-        
-       console.log(fetched)
-      } catch (e){
-        
-      }
-    }
-  }
- */
- 
-  
-
- 
-
 
   return (
       <div>

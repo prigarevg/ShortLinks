@@ -1,11 +1,9 @@
-import React, {useState, useEffect, useContext, useRef, render, useCallback} from "react";
+import React, {useState, useEffect, useContext, useCallback} from "react";
 import { useHttp } from "../hooks/http.hook";
 import {AuthContext} from '../context/AuthContext'
-import { useHistory, useParams } from "react-router-dom";
-import { Layout, Menu, Breadcrumb } from "antd";
-import { MapContainer, TileLayer, Marker, Popup, useMapEvents, useMapEvent, Circle, ser} from 'react-leaflet'
-import L from 'leaflet'
-import '../components/Map.css'
+import { useParams } from "react-router-dom";
+import { MapContainer, TileLayer, Marker, Popup, useMapEvents} from 'react-leaflet'
+import '../styles/Map.css'
 import {Loader} from '../components/Loader'
 
 
@@ -14,7 +12,6 @@ export const CoordinatesDetailPage = () => {
   const {request, loading} = useHttp()
   const [coordinates, setCoordinates] = useState([])
   const coordinateId = useParams().id
-  //const [position, setPosition] = useState([48.69408737533759, 44.41986658271402])
 
   const getCoordinates = useCallback(async () => {
     try {
@@ -22,7 +19,6 @@ export const CoordinatesDetailPage = () => {
         Authorization: `Bearer ${token}`
       })
       setCoordinates(fetched)
-      //console.log(fetched)
     } catch (e) {}
   }, [token, coordinateId, request])
 
@@ -48,9 +44,6 @@ export const CoordinatesDetailPage = () => {
     )
 
   }
-  //console.log(coordinates)
-
- 
 
   if (loading) {
     return <Loader />
@@ -66,12 +59,6 @@ export const CoordinatesDetailPage = () => {
       attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     />
-    {/*coordinates.map((city, index)=><Marker
-    position={[city.lat, city.lng]}
-    key = {index}
-    ></Marker>)*/
-  }
-  
     <LocationMarker />
   </MapContainer>
   )

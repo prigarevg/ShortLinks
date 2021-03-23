@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import { Upload } from 'antd';
 import ImgCrop from 'antd-img-crop';
-import { useHttp } from "../hooks/http.hook";
-import {AuthContext} from '../context/AuthContext'
-import { useHistory } from "react-router-dom";
 
 export const ImageUploadPage = () => {
   const [fileList, setFileList] = useState([

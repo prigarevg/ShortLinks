@@ -1,14 +1,14 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import {LinksPage} from './pages/LinksPage'
-import {CreatePage} from './pages/CreatePage'
-import {DetailPage} from './pages/DetailPage'
-import {CoordinatesDetailPage} from './pages/CoordinatesDetail'
-import {AuthPage} from './pages/AuthPage'
-import {AnalysisPage} from './pages/AnalysisPage'
-import {MapPage} from './pages/MapPage'
-import {ImageUploadPage} from './pages/ImageUploadPage'
-import {WeatherPage} from './pages/WeatherPage'
+import { LinksPage } from "./pages/LinksPage";
+import { CreatePage } from "./pages/CreatePage";
+import { DetailPage } from "./pages/DetailPage";
+import { CoordinatesDetailPage } from "./pages/CoordinatesDetail";
+import { AuthPage } from "./pages/AuthPage";
+import { AnalysisPage } from "./pages/AnalysisPage";
+import { MapPage } from "./pages/MapPage";
+import { ImageUploadPage } from "./pages/ImageUploadPage";
+import { WeatherPage } from "./pages/WeatherPage";
 
 export const useRoutes = (isAuthenticated) => {
   if (isAuthenticated) {
@@ -36,7 +36,7 @@ export const useRoutes = (isAuthenticated) => {
           <AnalysisPage />
         </Route>
         <Route path="/weather/:id">
-          <WeatherPage/>
+          <WeatherPage />
         </Route>
         <Redirect to="/create" />
       </Switch>

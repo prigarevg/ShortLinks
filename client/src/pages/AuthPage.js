@@ -1,24 +1,18 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Form, Input, Button } from "antd";
-import styles from "../components/AccountForm.module.css";
+import styles from "../styles/AccountForm.module.css";
 import { AuthContext } from "../context/AuthContext";
 import { useHttp } from "../hooks/http.hook";
-import { useMessage } from "../hooks/message.hook";
 import {message} from 'antd'
 
 export const AuthPage = () => {
   const auth = useContext(AuthContext);
-  //const message = useMessage();
-  const { loading, request, error, clearError } = useHttp();
+  const { loading, request} = useHttp();
   const [form, setForm] = useState({
     email: "",
     password: "",
   });
-/*
-  useEffect(() => {
-    message(error);
-    clearError();
-  }, [error, message, clearError]);*/
+
 
   const changeHandler = (event) => {
     setForm({ ...form, [event.target.name]: event.target.value });
